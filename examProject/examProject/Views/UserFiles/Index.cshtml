@@ -1,0 +1,63 @@
+﻿@model IEnumerable<examProject.Models.UserFile>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                <a asp-action="Index" asp-route-sortOrder="@ViewBag.NameSort">
+                    Имя
+                </a>
+            </th>
+            <th>
+                <a asp-action="Index" asp-route-sortOrder="@ViewBag.TimeSort">
+                    Время
+                </a>
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Path)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var i in Model)
+        {
+            if (i.UserId == ViewBag.login)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => i.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => i.Time)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => i.Path)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => i.UserId)
+                    </td>
+                    <td>
+                        <input type="text" hidden="hidden" id="testinput" name="testinput" value="@i.Path" />
+                        <a asp-action="Edit" asp-route-id="@i.Id">Edit</a> |
+                        <a asp-action="Details" asp-route-id="@i.Id">Details</a> |
+                        <a href="\UserFiles\Download?filename=@i.Path">Download</a> |
+                        <a asp-action="Delete" asp-route-id="@i.Id">Delete</a>
+                    </td>
+                </tr>
+            }
+
+        }
+    </tbody>
+</table>

@@ -21,4 +21,12 @@ namespace examProject.Models
 
         public int Previous { get; set; }
     }
+
+    public enum SortState
+    {
+        NameAsc,    // по имени по возрастанию
+        NameDesc,   // по имени по убыванию
+        TimeAsc, // по времени по возрастанию
+        TimeDesc,    // по времени по убыванию
+    }
 }

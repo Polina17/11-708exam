@@ -11,10 +11,14 @@ namespace examProject.Models
 
         public string Name { get; set; }
 
+        public string Description { get; set; }
+
         public string Path { get; set; }
 
         public DateTime Time { get; set; }
 
         public int UserId { get; set; }
+
+        public int Previous { get; set; }
     }
 }
